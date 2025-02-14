@@ -1,5 +1,7 @@
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6c70ca96-95d8-4ba8-93f5-3e41497f42e3" alt="logo" />
+</p>
 # Soko Langu - Market Trade and Marketing Hub System
-
 **Soko Langu** is a web-based application system designed to facilitate market trade and marketing activities for farmers, traders, and consumers. This platform allows users to interact, place orders, and manage their products effectively. It offers an intuitive interface for farmers to list their products, consumers to browse the products, and allows communication between the two parties.
 
 ---
@@ -23,6 +25,41 @@
 - **Package Manager**: Yarn
 - **Libraries**: React Router, Axios, React Hooks, etc.
   
+---
+
+## Screenshots
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3630194a-1121-4b9e-b2be-8c902ee2d2b2" alt="HomePage" />
+  <br><strong>HomePage</strong>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3ef08152-014b-4dc0-ba97-cc411b7f7220" alt="GetStarted Page" />
+  <br><strong>GetStarted Page</strong>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/63f87c07-9308-4c0b-8c2f-d32666e5d392" alt="Farmer's Signup" />
+  <br><strong>Farmer's Signup</strong>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d97eadcb-74ba-45ac-8a1e-94be27cd56ec" alt="Consumer's Signup" />
+  <br><strong>Consumer's Signup</strong>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f3f30d9c-a2c3-4d33-b3f4-68076f42cc3f" alt="Login Page" />
+  <br><strong>Login Page</strong>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/62350237-9198-40a8-b7d5-352102e00612" alt="ProductView Page" />
+  <br><strong>ProductView Page</strong>
+</p>
+
+For more, view the folder: `sokolangu screenshots`.
 ---
 
 ## Installation
