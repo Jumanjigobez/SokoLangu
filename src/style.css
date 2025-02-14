@@ -1,17 +1,19 @@
 @font-face {
-  font-family: 'OpenSans';
-  src: url(../public/font/OpenSans-VariableFont_wdth\,wght.ttf);
+  font-family: "OpenSans";
+  src: url("../public/font/OpenSans-VariableFont_wdth\,wght.ttf");
 }
 
 :root {
-  --bg-theme: #59C357;
-  --elem-theme: linear-gradient(to right bottom,
-      rgba(255, 255, 255, 0.7),
-      rgba(255, 255, 255, 0.3));
-  --color-theme: #59C357;
+  --bg-theme: #59c357;
+  --elem-theme: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  --color-theme: #59c357;
   --transparent-white: rgba(255, 255, 255, 0.8);
-  --menu-hover: #59C357;
-  --btn-theme: #59C357;
+  --menu-hover: #59c357;
+  --btn-theme: #59c357;
   --btn-theme2: green;
   --disabled-btn: #747474;
   --box-shadow: 2px 6px 5px green;
@@ -59,10 +61,7 @@ html {
 body {
   background: var(--bg-theme);
   color: var(--white);
-
-
 }
-
 
 /* body::after {
   content: "";
@@ -83,7 +82,6 @@ main {
   align-items: center;
   overflow-x: hidden;
   z-index: 1;
-
 }
 
 .content {
@@ -97,11 +95,6 @@ main #active {
   height: 100%;
   /* gap: 2rem; */
 }
-
-
-
-
-
 
 /* Loading Screen */
 .loader {
@@ -134,15 +127,15 @@ main #active {
 
 @keyframes rotate {
   0% {
-    transform: rotate(0deg) scale(0.8)
+    transform: rotate(0deg) scale(0.8);
   }
 
   50% {
-    transform: rotate(360deg) scale(1.2)
+    transform: rotate(360deg) scale(1.2);
   }
 
   100% {
-    transform: rotate(720deg) scale(0.8)
+    transform: rotate(720deg) scale(0.8);
   }
 }
 
@@ -180,8 +173,6 @@ main #active {
   }
 }
 
-
-
 /* Header part*/
 #active .container {
   flex-basis: 100%;
@@ -203,7 +194,6 @@ main #active {
   flex-direction: column;
   align-items: center;
 
-
   /* border-radius: 25px 0 0 0; */
 
   z-index: 1;
@@ -213,8 +203,6 @@ main #active {
   background: var(--bg-theme);
   min-height: 100%;
 }
-
-
 
 .header_content {
   background-color: var(--transparent-white);
@@ -247,9 +235,7 @@ main #active {
   gap: 0.5rem;
 }
 
-
 .header .hero {
-
   height: 500px;
 
   display: flex;
@@ -283,7 +269,6 @@ main #active {
 
 .btn:hover {
   box-shadow: 2px 7px 5px rgba(0, 0, 0, 0.4);
-
 }
 
 .btn:after {
@@ -317,7 +302,6 @@ main #active {
 .btn.notification_btn {
   background: transparent;
   color: black;
-
 }
 
 .btn2 i {
@@ -334,7 +318,6 @@ main #active {
 .btn2:hover {
   box-shadow: unset;
   color: var(--color-theme);
-
 }
 
 .btn2:hover:after {
@@ -342,14 +325,12 @@ main #active {
 }
 
 .btn2.active {
-  color: var(--color-theme)
+  color: var(--color-theme);
 }
 
 /* Produce Display */
 .produce_display {
-
   padding: 4rem 0;
-
 }
 
 .produce_display .content {
@@ -359,7 +340,6 @@ main #active {
 }
 
 .produce_display .search_part {
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -369,12 +349,10 @@ main #active {
   display: flex;
   align-items: center;
   width: 50%;
-
 }
 
-
 .search_form .input_group:nth-child(1) {
-  width: 100%
+  width: 100%;
 }
 
 input.search {
@@ -409,7 +387,6 @@ input.search {
   align-items: center;
   justify-content: space-between;
 }
-
 
 .display_part .custom_select {
   width: 20%;
@@ -467,11 +444,10 @@ input.search {
   }
 }
 
-
 .box .img_part img {
   width: 100%;
   height: 100%;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .box .img_part img:hover {
@@ -489,10 +465,6 @@ input.search {
   color: var(--color-theme);
 }
 
-
-
-
-
 /* Get Started page */
 .get_started {
   display: flex;
@@ -507,9 +479,7 @@ input.search {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-
 }
-
 
 .box.box2 {
   width: auto;
@@ -570,13 +540,12 @@ input.search {
   text-decoration: none;
   color: var(--black);
   font-weight: bold;
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .box2 a:hover {
   color: var(--green);
 }
-
 
 .box:hover {
   box-shadow: var(--box-shadow);
@@ -599,7 +568,6 @@ input.search {
   height: 250px;
   width: 250px;
   background: transparent;
-
 }
 
 .admin_box .icon_part {
@@ -607,8 +575,6 @@ input.search {
   position: absolute;
   top: 5%;
   left: 5%;
-
-
 }
 
 .admin_box .icon_part i {
@@ -646,7 +612,6 @@ input.search {
   gap: 1rem;
 }
 
-
 /* Signup Page */
 .signup_container {
   background: url(../public/images/farmerSignupBg.jpg) rgba(18, 18, 18, 0.7);
@@ -665,7 +630,6 @@ input.search {
   justify-content: center;
 
   padding: 1rem;
-
 }
 
 .signup_container.consumer {
@@ -677,15 +641,12 @@ input.search {
   background-blend-mode: darken;
 }
 
-
 .box.form_box {
   width: 600px;
   gap: 1rem;
   align-items: flex-start;
   text-align: left;
-
 }
-
 
 .signup_container.consumer .content {
   display: flex;
@@ -711,8 +672,6 @@ input.search {
   margin-top: 1.5rem;
 }
 
-
-
 /* .custom_select.region {
   min-width: 185px;
 } */
@@ -724,7 +683,6 @@ input.search {
 .login_container .form_box {
   width: 500px;
 }
-
 
 .box2.form_box .title_part h1 {
   font-weight: bold;
@@ -844,7 +802,6 @@ select:focus {
   display: flex;
   justify-content: space-between;
   gap: 0.5rem;
-
 }
 
 .grouping.check_group {
@@ -1059,7 +1016,7 @@ select:focus {
   gap: 1rem;
   color: var(--black);
   text-align: center;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .coder_part a {
@@ -1071,7 +1028,6 @@ select:focus {
 .coder_part a:hover {
   color: var(--color-theme);
 }
-
 
 .header.dashHeader {
   background: var(--transparent-white);
@@ -1179,7 +1135,7 @@ select:focus {
   box-shadow: var(--box-shadow);
 }
 
-.profile_part>i {
+.profile_part > i {
   font-size: 2rem;
 }
 
@@ -1228,10 +1184,6 @@ select:focus {
   z-index: 99;
 }
 
-
-
-
-
 /* Delete marked actions */
 .delete_marked {
   width: 100%;
@@ -1274,8 +1226,6 @@ select:focus {
   max-height: 45vh;
   width: 100%;
 }
-
-
 
 table {
   margin-top: 1rem;
@@ -1327,7 +1277,7 @@ td.id {
 
 td.img {
   width: 100px;
-  height: 100px
+  height: 100px;
 }
 
 td img {
@@ -1597,7 +1547,6 @@ select {
   position: absolute;
   right: 1rem;
   pointer-events: none;
-
 }
 
 .custom_select::after {
@@ -1767,7 +1716,6 @@ table.projects thead {
 
 .produce_container .content .part_1,
 .produce_container .content .part_2 {
-
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -1782,14 +1730,12 @@ table.projects thead {
 
   width: 100%;
   height: 400px;
-
 }
 
 .produce_container .content .part_1 .img_part img {
   width: 100%;
   height: 100%;
   cursor: pointer;
-
 }
 
 .box2.produceView:hover {
@@ -1801,10 +1747,8 @@ table.projects thead {
   text-align: left;
 }
 
-
 .produceView .part_1 {
   width: 100%;
-
 }
 
 .produceView .part_1 .txt {
@@ -1818,7 +1762,7 @@ table.projects thead {
 }
 
 .produce_container .content .part_2 .produceView:nth-child(1) .btn {
-  width: 100%
+  width: 100%;
 }
 
 .produce_container .content .part_2.txt_part {
@@ -1850,7 +1794,6 @@ table.projects thead {
   gap: 1rem;
   text-align: left;
   align-items: center;
-
 }
 
 .produceView .name_part h2 {
@@ -1875,7 +1818,6 @@ table.projects thead {
   gap: 2rem;
 }
 
-
 /* Messages */
 .messages_container {
   align-items: flex-start;
@@ -1883,7 +1825,6 @@ table.projects thead {
 }
 
 .messages_container .content {
-
   align-self: flex-start;
   justify-content: flex-start;
   gap: 0;
@@ -1892,7 +1833,6 @@ table.projects thead {
 .users_container:hover,
 .msg_container:hover {
   background-color: var(--transparent-white);
-
 }
 
 .box2.users_container {
@@ -1954,7 +1894,6 @@ table.projects thead {
   border-radius: 25%;
 }
 
-
 .box2.msg_container {
   width: 600px;
   border-radius: 0 8px 8px 0;
@@ -1988,16 +1927,16 @@ table.projects thead {
 .msg_part .msg_date {
   position: relative;
   color: grey;
-  top: 0.5rem;
+  top: 2rem;
   left: 0;
-  float: left;
+
   font-style: italic;
 }
 
 .msg_content {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2.5rem;
 }
 
 .msg_box {
@@ -2012,7 +1951,6 @@ table.projects thead {
   position: relative;
 }
 
-
 .msg_delete {
   display: none;
   position: absolute;
@@ -2020,7 +1958,7 @@ table.projects thead {
   color: var(--red);
   font-size: 1.5em;
   cursor: pointer;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .msg_box:hover .msg_delete {
@@ -2042,7 +1980,6 @@ table.projects thead {
   display: flex;
   align-items: center;
   width: 100%;
-
 }
 
 .msg_form .input_group {
@@ -2064,9 +2001,7 @@ table.projects thead {
 }
 
 .textarea_chat {
-
   height: 50px;
-
 }
 
 .box2.msg_container .msg_form .btn_part {
@@ -2074,7 +2009,6 @@ table.projects thead {
 }
 
 .awaiting_box {
-
   text-align: center;
   height: 100%;
   display: flex;
@@ -2128,15 +2062,13 @@ table.projects thead {
 
 /* Mobile screen Viewers */
 @media (max-width: 800px) {
-
   :root {
-    --content-width: 100%
+    --content-width: 100%;
   }
 
   .hero h1 {
     width: 100%;
     font-size: 20px;
-
   }
 
   .produce_display,
@@ -2151,7 +2083,6 @@ table.projects thead {
   }
 
   .display_part .part_1 {
-
     justify-content: center;
     gap: 3rem;
   }
@@ -2161,17 +2092,13 @@ table.projects thead {
   }
 
   .get_started {
-    padding: 5rem 0;
+    padding: 5rem 1rem;
+    width: 100%;
   }
 
   .get_started .content {
     flex-direction: column;
   }
-
-
-
-
-
 
   #login_form,
   #login_form.signup_form {
@@ -2253,8 +2180,6 @@ table.projects thead {
     font-size: small;
   }
 
-
-
   .container .content_part .part_2 {
     width: 90%;
   }
@@ -2282,7 +2207,6 @@ table.projects thead {
     width: 100%;
   }
 
-
   .content .container {
     width: 100%;
     display: flex;
@@ -2290,19 +2214,16 @@ table.projects thead {
     align-items: center;
     justify-content: center;
     gap: 2rem;
-
   }
 
   .box {
     gap: 1rem;
     width: 100%;
-
   }
 
   .box .img_part {
     width: 100%;
     height: 300px;
-
   }
 
   td.actions {
@@ -2361,9 +2282,6 @@ table.projects thead {
     flex-wrap: wrap;
   }
 
-
-
-
   .messages_container,
   .box2.users_container,
   .users,
@@ -2373,7 +2291,6 @@ table.projects thead {
 
   .dashContainer .content_part.messages_container {
     flex-wrap: wrap;
-
   }
 
   .messages_container .img_part {
@@ -2384,6 +2301,10 @@ table.projects thead {
   .box2.msg_container {
     margin-top: 2rem;
     border-radius: 8px;
+  }
+
+  .produce_container .content .part_1 {
+    min-width: 100%;
   }
 
   .footer {

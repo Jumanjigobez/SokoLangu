@@ -28,7 +28,7 @@
     "predeploy": "yarn build",
     "deploy": "gh-pages -b main -d build"
   },
-  "homepage": "https://jumanjigobez.github.io/SokoLangu",
+
   "eslintConfig": {
     "extends": [
       "react-app",
