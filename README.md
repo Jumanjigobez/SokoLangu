@@ -1,6 +1,7 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/6c70ca96-95d8-4ba8-93f5-3e41497f42e3" alt="logo" />
 </p>
+
 # Soko Langu - Market Trade and Marketing Hub System
 **Soko Langu** is a web-based application system designed to facilitate market trade and marketing activities for farmers, traders, and consumers. This platform allows users to interact, place orders, and manage their products effectively. It offers an intuitive interface for farmers to list their products, consumers to browse the products, and allows communication between the two parties.
 
