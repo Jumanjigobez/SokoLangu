@@ -64,6 +64,20 @@ const TopHeader = () => {
         navigate("/consumerSettings")
     }
 
+    const fetchMessages = () => {
+        axios({
+            method: "get",
+            params: { user_id: user },
+            url: api_url + "/Messages/getMessages.php",
+        })
+            .then((response) => {
+                setMessagesData(response.data.messages);
+                setUnseenCount(response.data.unseenCount); // Store unseen messages count
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }
     useEffect(() => {
         // Fetch account data (if needed)
         axios({
@@ -79,19 +93,10 @@ const TopHeader = () => {
                 console.log(e);
             });
 
-        // Fetch messages data and unseen count
-        axios({
-            method: "get",
-            params: { user_id: user },
-            url: api_url + "/Messages/getMessages.php",
-        })
-            .then((response) => {
-                setMessagesData(response.data.messages);
-                setUnseenCount(response.data.unseenCount); // Store unseen messages count
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+        // Fetch messages data and unseen count every 3 second
+        const intervalId = setInterval(fetchMessages, 3000);
+
+        return () => clearInterval(intervalId)
 
     }, []);
 

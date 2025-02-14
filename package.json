@@ -6,12 +6,6 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
-<<<<<<< HEAD
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.0"
-=======
     "axios": "^1.7.9",
     "crypto-js": "^4.2.0",
     "formik": "^2.4.6",
@@ -25,22 +19,16 @@
     "redux": "^5.0.1",
     "web-vitals": "^2.1.0",
     "yup": "^1.6.1"
->>>>>>> 9befd2f057704c80115250feac27ee492fda140d
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-<<<<<<< HEAD
-    "eject": "react-scripts eject"
-  },
-=======
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
     "deploy": "gh-pages -b main -d build"
   },
 
->>>>>>> 9befd2f057704c80115250feac27ee492fda140d
   "eslintConfig": {
     "extends": [
       "react-app",

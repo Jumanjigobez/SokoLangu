@@ -81,6 +81,21 @@ const Header = () => {
         navigate("/settings")
     }
 
+    const fetchMessages = () => {
+        axios({
+            method: "get",
+            params: { user_id: user },
+            url: api_url + "/Messages/getMessages.php",
+        })
+            .then((response) => {
+                setMessagesData(response.data.messages);
+                setUnseenCount(response.data.unseenCount); // Store unseen messages count
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }
+
     useEffect(() => {
         axios({
             method: "get",
@@ -95,19 +110,10 @@ const Header = () => {
                 console.log(e);
             });
 
-        // Fetch messages data and unseen count
-        axios({
-            method: "get",
-            params: { user_id: user },
-            url: api_url + "/Messages/getMessages.php",
-        })
-            .then((response) => {
-                setMessagesData(response.data.messages);
-                setUnseenCount(response.data.unseenCount); // Store unseen messages count
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+        // Fetch messages data and unseen count every 3 second
+        const intervalId = setInterval(fetchMessages, 3000);
+
+        return () => clearInterval(intervalId)
 
     }, []);
     return (
