@@ -28,32 +28,52 @@
     }
 
     if (!empty($username) && !empty($email) && !empty($password) && !empty($first_name) && !empty($last_name) && !empty($phone_no) && !empty($region) && $terms_check) {
-        $query = $conn->prepare("SELECT * FROM `users_table` WHERE username = (?) OR email = (?)");
-        $query->bind_param("ss", $username, $email);
+        // Check if username exists
+        $query = $conn->prepare("SELECT * FROM `users_table` WHERE Username = (?)");
+        $query->bind_param("s", $username);
+        $query->execute();
+        $result = $query->get_result();
+        if (mysqli_num_rows($result) > 0) {
+            echo "Username Exists";
+            exit;
+        }
+
+        // Check if email exists
+        $query = $conn->prepare("SELECT * FROM `users_table` WHERE Email = (?)");
+        $query->bind_param("s", $email);
+        $query->execute();
+        $result = $query->get_result();
+        if (mysqli_num_rows($result) > 0) {
+            echo "Email Exists";
+            exit;
+        }
+
+        // Check if phone number exists
+        $query = $conn->prepare("SELECT * FROM `users_table` WHERE PhoneNo = (?)");
+        $query->bind_param("s", $phone_no);
+        $query->execute();
+        $result = $query->get_result();
+        if (mysqli_num_rows($result) > 0) {
+            echo "Phone Number Exists";
+            exit;
+        }
+
+        // Insert new user if no conflicts
+        $user_id = generateUserID();
+        date_default_timezone_set('Africa/Nairobi');
+        $joined_date = date('Y-m-d H:i:s');
+        $terms_check = "Agreed";
+        $password = password_hash($password, PASSWORD_DEFAULT); // Hash password for security
+        $photo = "avatar.png"; // Default photo of the new user
+        $query = $conn->prepare("INSERT INTO `users_table` (UserID, Username, FirstName, LastName, PhoneNo, Email, Region, Role, Password, JoinedDate, Photo, TermsAgreed) 
+                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $query->bind_param("ssssssssssss", $user_id, $username, $first_name, $last_name, $phone_no, $email, $region, $role, $password, $joined_date, $photo, $terms_check);
         $query->execute();
 
-        $result = $query->get_result();
-        $num = mysqli_num_rows($result);
-
-        if ($num == 1) {
-            echo "Username/Email Exists";
+        if ($query) {
+            echo 1; // Success response
         } else {
-            $user_id = generateUserID();
-            date_default_timezone_set('Africa/Nairobi');
-            $joined_date = date('Y-m-d H:i:s');
-            $terms_check = "Agreed";
-            $password = password_hash($password, PASSWORD_DEFAULT); // Hash password for security
-            $photo = "avatar.png"; //Default photo of the new user
-            $query = $conn->prepare("INSERT INTO `users_table` (UserID, Username, FirstName, LastName, PhoneNo, Email, Region, Role, Password, JoinedDate, Photo, TermsAgreed) 
-                                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $query->bind_param("ssssssssssss", $user_id, $username, $first_name, $last_name, $phone_no, $email, $region, $role, $password, $joined_date, $photo, $terms_check);
-            $query->execute();
-
-            if ($query) {
-                echo 1; // Success response
-            } else {
-                echo "Error, Please Try Again!";
-            }
+            echo "Error, Please Try Again!";
         }
     } else {
         echo "All fields Required!";
