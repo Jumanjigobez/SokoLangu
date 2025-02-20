@@ -86,13 +86,10 @@ const Login = () => {
             .then((response) => {
                 if (Array.isArray(response.data)) {
                     //response will be an array only on success
-                    console.log(response.data[0]);
+                    // console.log(response.data[0]);
 
                     login_btn.current.innerText = "Loading...";
                     login_btn.current.disabled = true;
-
-
-
 
 
                     let sessions = {}
