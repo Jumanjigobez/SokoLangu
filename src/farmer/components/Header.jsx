@@ -5,9 +5,10 @@ import axios from "axios";
 
 import { useDispatch, useSelector } from "react-redux";
 import { menuOpen } from "../../store/actions";
-import { api_url } from "../../routes";
+import { api_url, LoggedIn } from "../../routes";
 
 const Header = () => {
+    const logged = LoggedIn;
     const [showProfileCont, setShowProfileCont] = useState(false);
 
 
@@ -16,6 +17,7 @@ const Header = () => {
 
     const [accountData, setAccountData] = useState([]),
         [messagesData, setMessagesData] = useState([]),
+        [loggedIn, setLoggedIn] = useState(logged),
         [unseenCount, setUnseenCount] = useState(0);
 
 
@@ -110,10 +112,12 @@ const Header = () => {
                 console.log(e);
             });
 
-        // Fetch messages data and unseen count every 3 second
-        const intervalId = setInterval(fetchMessages, 3000);
+        // Fetch messages data and unseen count every 3 second if loggedIn is true
+        if (loggedIn) {
+            const intervalId = setInterval(fetchMessages, 3000);
 
-        return () => clearInterval(intervalId)
+            return () => clearInterval(intervalId)
+        }
 
     }, []);
     return (

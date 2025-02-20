@@ -93,10 +93,13 @@ const TopHeader = () => {
                 console.log(e);
             });
 
-        // Fetch messages data and unseen count every 3 second
-        const intervalId = setInterval(fetchMessages, 3000);
+        // Fetch messages data and unseen count every 3 second if loggedIn is true
+        if (loggedIn) {
+            const intervalId = setInterval(fetchMessages, 3000);
 
-        return () => clearInterval(intervalId)
+            return () => clearInterval(intervalId)
+        }
+
 
     }, []);
 
@@ -114,7 +117,7 @@ const TopHeader = () => {
                     {
                         !loggedIn ? (
                             <div className='part_2'>
-                                <NavLink to='/login'><button className='btn btn2'>Login</button></NavLink>
+                                <NavLink to='/login' className='login_btn'><button className='btn btn2'>Login</button></NavLink>
                                 <NavLink to='/getstarted'><button className='btn'>SignUp</button></NavLink>
                             </div>
                         ) : (

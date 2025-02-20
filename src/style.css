@@ -5,11 +5,9 @@
 
 :root {
   --bg-theme: #59c357;
-  --elem-theme: linear-gradient(
-    to right bottom,
-    rgba(255, 255, 255, 0.7),
-    rgba(255, 255, 255, 0.3)
-  );
+  --elem-theme: linear-gradient(to right bottom,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.3));
   --color-theme: #59c357;
   --transparent-white: rgba(255, 255, 255, 0.8);
   --menu-hover: #59c357;
@@ -482,8 +480,8 @@ input.search {
 }
 
 .box.box2 {
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   padding: 1rem;
   background-color: var(--transparent-white);
   color: var(--black);
@@ -1135,7 +1133,7 @@ select:focus {
   box-shadow: var(--box-shadow);
 }
 
-.profile_part > i {
+.profile_part>i {
   font-size: 2rem;
 }
 
@@ -2166,6 +2164,10 @@ table.projects thead {
     flex-basis: 60%;
   }
 
+  .header_content .part_2 a.login_btn {
+    display: none;
+  }
+
   .container .header .user_part h2 {
     display: none;
   }
@@ -2301,6 +2303,14 @@ table.projects thead {
   .box2.msg_container {
     margin-top: 2rem;
     border-radius: 8px;
+  }
+
+  .box2 .txt_part {
+    width: 100%;
+  }
+
+  .box2 .txt_part p {
+    font-size: 15px;
   }
 
   .produce_container .content .part_1 {
