@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Navigate, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Navigate,
+  Route,
+} from "react-router-dom";
 
 import Home from "./pages/Home";
 import GetStarted from "./pages/GetStarted";
@@ -26,6 +31,8 @@ import AdminSettings from "./admin/pages/AdminSettings";
 import ProductsManagement from "./admin/pages/ProductsManagement";
 
 export const api_url = "http://localhost/sokolangu/api";
+// "http://localhost/sokolangu/api"
+// "https://sokolangu.infinityfreeapp.com/api"
 
 // Check if user is already logged in to route to the required page
 const sessionsData = localStorage.getItem("sessions");
@@ -51,7 +58,18 @@ const MainRoutes = () => {
       <Router>
         <Routes>
           {/* Public Routes - Accessible to Everyone */}
-          <Route path="/" element={!userFarmer && !userAdmin ? <Home /> : userAdmin ? <Navigate to="/adminHome" /> : <Navigate to="/farmerHome" />} />
+          <Route
+            path="/"
+            element={
+              !userFarmer && !userAdmin ? (
+                <Home />
+              ) : userAdmin ? (
+                <Navigate to="/adminHome" />
+              ) : (
+                <Navigate to="/farmerHome" />
+              )
+            }
+          />
           <Route path="/getstarted" element={<GetStarted />} />
           <Route path="/signupfarmer" element={<FarmerSignup />} />
           <Route path="/signupconsumer" element={<ConsumerSignup />} />
@@ -63,17 +81,32 @@ const MainRoutes = () => {
           {LoggedIn && !userFarmer && !userAdmin ? (
             <>
               <Route path="/productView/:productID" element={<ProductView />} />
-              <Route path="/productSearch/:search_term" element={<ProductSearch />} />
+              <Route
+                path="/productSearch/:search_term"
+                element={<ProductSearch />}
+              />
               <Route path="/messagesConsumer" element={<Messages />} />
               <Route path="/consumerSettings" element={<ConsumerSettings />} />
               <Route path="/wishlist" element={<Wishlist />} />
             </>
           ) : (
             <>
-              <Route path="/productView/:productID" element={<Navigate to="/login" />} />
-              <Route path="/productSearch/:search_term" element={<Navigate to="/login" />} />
-              <Route path="/messagesConsumer" element={<Navigate to="/login" />} />
-              <Route path="/consumerSettings" element={<Navigate to="/login" />} />
+              <Route
+                path="/productView/:productID"
+                element={<Navigate to="/login" />}
+              />
+              <Route
+                path="/productSearch/:search_term"
+                element={<Navigate to="/login" />}
+              />
+              <Route
+                path="/messagesConsumer"
+                element={<Navigate to="/login" />}
+              />
+              <Route
+                path="/consumerSettings"
+                element={<Navigate to="/login" />}
+              />
               <Route path="/wishlist" element={<Navigate to="/login" />} />
             </>
           )}
@@ -103,14 +136,23 @@ const MainRoutes = () => {
               <Route path="/adminHome" element={<AdminHome />} />
               <Route path="/usersManagement" element={<UsersManagement />} />
               <Route path="/adminSettings" element={<AdminSettings />} />
-              <Route path="/productsManagement" element={<ProductsManagement />} />
+              <Route
+                path="/productsManagement"
+                element={<ProductsManagement />}
+              />
             </>
           ) : (
             <>
               <Route path="/adminHome" element={<Navigate to="/login" />} />
-              <Route path="/usersManagement" element={<Navigate to="/login" />} />
+              <Route
+                path="/usersManagement"
+                element={<Navigate to="/login" />}
+              />
               <Route path="/adminSettings" element={<Navigate to="/login" />} />
-              <Route path="/productsManagement" element={<Navigate to="/login" />} />
+              <Route
+                path="/productsManagement"
+                element={<Navigate to="/login" />}
+              />
             </>
           )}
         </Routes>
