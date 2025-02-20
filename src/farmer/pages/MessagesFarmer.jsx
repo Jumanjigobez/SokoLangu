@@ -332,10 +332,10 @@ const MessagesFarmer = () => {
                                 __html:
                                   user !== row.partner_id
                                     ? `<b>You:</b> ${truncateMessage(
-                                      row.last_message,
+                                      row.last_message.replace(/\\n/g, ' '),
                                       30
                                     )}`
-                                    : truncateMessage(row.last_message, 30),
+                                    : truncateMessage(row.last_message.replace(/\\n/g, ' '), 30),
                               }}
                             ></span>
                             {row.unseenCount > 0 &&
