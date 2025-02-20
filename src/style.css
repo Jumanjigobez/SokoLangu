@@ -1839,7 +1839,7 @@ table.projects thead {
   gap: 2rem;
   border-radius: 8px 0 0 8px;
   border-right: 4px solid var(--green);
-  width: 400px;
+  width: 450px;
 }
 
 .users {
