@@ -70,13 +70,15 @@ const MessagesFarmer = () => {
     }
 
     const message = msg_input.current.value.trim();
+    const forbiddenCharacters = /[\t\r]/g;//the tab, replace character
+
     if (message === "") return;
 
     axios
       .post(api_url + "/farmer/sendChat.php", {
         farmer_id: user, // Logged-in farmer (Sender)
         consumer_id: selectedUser.partner_id, // Selected consumer (Receiver)
-        msg: message,
+        msg: message.replace(forbiddenCharacters, ' '),
       })
       .then((response) => {
         if (response.data === 1) {
@@ -424,7 +426,7 @@ const MessagesFarmer = () => {
                             }`}
                           key={msg.msg_id}
                         >
-                          <p>{msg.message}</p>
+                          <p dangerouslySetInnerHTML={{ __html: msg.message.replace(/\\n/g, '<br />') }} />
                           <span className="msg_date">
                             {formatDate(msg.date)}
                           </span>
