@@ -25,7 +25,9 @@ import UsersManagement from "./admin/pages/UsersManagement";
 import AdminSettings from "./admin/pages/AdminSettings";
 import ProductsManagement from "./admin/pages/ProductsManagement";
 
-export const api_url = "http://localhost/sokolangu/api";
+export const api_url = "https://sokolangu.infinityfreeapp.com/api";
+// "https://sokolangu.infinityfreeapp.com/api";
+// "http://localhost/sokolangu/api";
 
 // Check if user is already logged in to route to the required page
 const sessionsData = localStorage.getItem("sessions");
