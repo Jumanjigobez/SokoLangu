@@ -43,12 +43,12 @@ const TopHeader = () => {
 
           toast.success("Good Bye 👋", {
             position: "top-center",
-            autoClose: 2000,
+            autoClose: 1000,
           });
 
           setTimeout(() => {
             window.location.href = "/login";
-          }, 3000);
+          }, 1100);
         } else {
           toast.error(response.data, {
             position: "top-center",
@@ -61,10 +61,9 @@ const TopHeader = () => {
       });
   };
 
-  toast.success("Good Bye 👋", {
-    position: "top-center",
-    autoClose: 1000,
-  });
+  const handleGoToSettings = () => {
+    navigate("/consumerSettings");
+  };
 
   const fetchMessages = () => {
     axios({
