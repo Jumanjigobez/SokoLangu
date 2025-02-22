@@ -155,17 +155,10 @@ const ProductSearch = () => {
                 <select
                   id="region_select"
                   name="region"
-                  defaultValue={
-                    Array.isArray(filteredProductsData) &&
-                    filteredProductsData.length !== 0
-                      ? filteredProductsData[0].Region
-                      : "--Region--"
-                  }
+                  defaultValue={""}
                   onChange={(e) => handleSearchFilter("region", e.target.value)}
                 >
-                  <option value="" disabled>
-                    --Region--
-                  </option>
+                  <option value="">--Region--</option>
                   <option value="All">All</option>
                   <option value="Baringo">Baringo</option>
                   <option value="Bomet">Bomet</option>

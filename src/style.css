@@ -2086,12 +2086,12 @@ table.projects thead {
   }
 
   .display_part .part_1 {
-    justify-content: center;
-    gap: 3rem;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .display_part .custom_select {
-    width: 40%;
+    width: 100%;
   }
 
   .get_started {
