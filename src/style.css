@@ -1841,7 +1841,7 @@ table.projects thead {
   gap: 2rem;
   border-radius: 8px 0 0 8px;
   border-right: 4px solid var(--green);
-  width: 400px;
+  width: 450px;
 }
 
 .users {
@@ -2169,6 +2169,10 @@ table.projects thead {
     flex-basis: 60%;
   }
 
+  .header_content .part_2 a.login_btn {
+    display: none;
+  }
+
   .container .header .user_part h2 {
     display: none;
   }
@@ -2304,9 +2308,6 @@ table.projects thead {
   .box2.msg_container {
     margin-top: 2rem;
     border-radius: 8px;
-  }
-  .box2 .txt_part {
-    width: 100%;
   }
 
   .box2 .txt_part p {

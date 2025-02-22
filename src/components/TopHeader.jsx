@@ -61,9 +61,10 @@ const TopHeader = () => {
       });
   };
 
-  const handleGoToSettings = () => {
-    navigate("/consumerSettings");
-  };
+  toast.success("Good Bye 👋", {
+    position: "top-center",
+    autoClose: 1000,
+  });
 
   const fetchMessages = () => {
     axios({

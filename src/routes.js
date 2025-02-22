@@ -31,6 +31,8 @@ import AdminSettings from "./admin/pages/AdminSettings";
 import ProductsManagement from "./admin/pages/ProductsManagement";
 
 export const api_url = "http://localhost/sokolangu/api";
+// "https://sokolangu.infinityfreeapp.com/api";
+// "http://localhost/sokolangu/api";
 // "http://localhost/sokolangu/api"
 // "https://sokolangu.infinityfreeapp.com/api"
 

@@ -372,9 +372,8 @@ const ProductView = () => {
                           <div className="txt">
                             <h1>{row.Name}</h1>
                             <button
-                              className={`btn btn2 ${
-                                isInWishlist ? "active" : ""
-                              }`}
+                              className={`btn btn2 ${isInWishlist ? "active" : ""
+                                }`}
                               onClick={(e) =>
                                 toggleWish(e.currentTarget, row.Id)
                               }
@@ -399,7 +398,7 @@ const ProductView = () => {
 
                           <div className="txt">
                             <h2>Description</h2>
-                            <p>{row.Description}</p>
+                            <p dangerouslySetInnerHTML={{ __html: row.Description.replace(/\\n/g, '<br />') }} />
                           </div>
 
                           <div className="btn_part">

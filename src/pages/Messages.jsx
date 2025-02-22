@@ -68,6 +68,8 @@ const Messages = () => {
     }
 
     const message = msg_input.current.value.trim();
+    const forbiddenCharacters = /[\t\r]/g;//the tab, replace character
+
     if (message === "") return;
 
     // console.log({
@@ -82,7 +84,7 @@ const Messages = () => {
         {
           consumer_id: user, // Logged-in consumer (Sender)
           farmer_id: selectedUser.partner_id, // Selected farmer (Receiver)
-          msg: message,
+          msg: message.replace(forbiddenCharacters, ' '),
         },
         {
           headers: {
@@ -341,10 +343,10 @@ const Messages = () => {
                               __html:
                                 user !== row.partner_id
                                   ? `<b>You:</b> ${truncateMessage(
-                                    row.last_message,
+                                    row.last_message.replace(/\\n/g, ' '),
                                     30
                                   )}`
-                                  : truncateMessage(row.last_message, 30),
+                                  : truncateMessage(row.last_message.replace(/\\n/g, ' '), 30),
                             }}
                           ></span>
                           {row.unseenCount > 0 &&
@@ -435,7 +437,7 @@ const Messages = () => {
                           }`}
                         key={msg.msg_id}
                       >
-                        <p>{msg.message}</p>
+                        <p dangerouslySetInnerHTML={{ __html: msg.message.replace(/\\n/g, '<br />') }} />
                         <span className="msg_date">{formatDate(msg.date)}</span>
                         {msg.sender_id === user && (
                           <span

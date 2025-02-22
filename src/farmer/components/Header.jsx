@@ -5,8 +5,7 @@ import axios from "axios";
 
 import { useDispatch, useSelector } from "react-redux";
 import { menuOpen } from "../../store/actions";
-import { LoggedIn } from "../../routes";
-import { api_url } from "../../routes";
+import { api_url, LoggedIn } from "../../routes";
 
 const Header = () => {
   const logged = LoggedIn;
