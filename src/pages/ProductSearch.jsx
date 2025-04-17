@@ -109,7 +109,7 @@ const ProductSearch = () => {
     }, 3000);
   }, []);
 
-  console.log(filteredProductsData);
+  // console.log(filteredProductsData);
   return (
     <>
       <header className="header header_2">
@@ -119,7 +119,7 @@ const ProductSearch = () => {
       <section className="produce_display">
         <div className="go_back" style={{ margin: "1rem" }}>
           <button className="btn btn4 normal" onClick={() => navigate("/")}>
-            Go back
+            <i className="fa-solid fa-home"></i>
           </button>
         </div>
         <div className="content">

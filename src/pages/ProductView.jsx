@@ -337,7 +337,7 @@ const ProductView = () => {
       <section className="get_started produce_container">
         <div className="go_back" style={{ marginLeft: "1rem" }}>
           <button className="btn btn4 normal" onClick={() => navigate("/")}>
-            Go back
+            <i className="fa-solid fa-home"></i>
           </button>
         </div>
 
@@ -372,8 +372,9 @@ const ProductView = () => {
                           <div className="txt">
                             <h1>{row.Name}</h1>
                             <button
-                              className={`btn btn2 ${isInWishlist ? "active" : ""
-                                }`}
+                              className={`btn btn2 ${
+                                isInWishlist ? "active" : ""
+                              }`}
                               onClick={(e) =>
                                 toggleWish(e.currentTarget, row.Id)
                               }
@@ -398,7 +399,14 @@ const ProductView = () => {
 
                           <div className="txt">
                             <h2>Description</h2>
-                            <p dangerouslySetInnerHTML={{ __html: row.Description.replace(/\\n/g, '<br />') }} />
+                            <p
+                              dangerouslySetInnerHTML={{
+                                __html: row.Description.replace(
+                                  /\\n/g,
+                                  "<br />"
+                                ),
+                              }}
+                            />
                           </div>
 
                           <div className="btn_part">

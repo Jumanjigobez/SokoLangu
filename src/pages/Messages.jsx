@@ -18,8 +18,8 @@ const Messages = () => {
     [error, setError] = useState("");
 
   const [MessagesUpdate, setMessagesUpdate] = useState({
-    updated: 0,
-  }),
+      updated: 0,
+    }),
     [isLoading, setIsLoading] = useState(true); //For loading screen when page is changed
 
   const msg_input = useRef(),
@@ -68,7 +68,7 @@ const Messages = () => {
     }
 
     const message = msg_input.current.value.trim();
-    const forbiddenCharacters = /[\t\r]/g;//the tab, replace character
+    const forbiddenCharacters = /[\t\r]/g; //the tab, replace character
 
     if (message === "") return;
 
@@ -84,7 +84,7 @@ const Messages = () => {
         {
           consumer_id: user, // Logged-in consumer (Sender)
           farmer_id: selectedUser.partner_id, // Selected farmer (Receiver)
-          msg: message.replace(forbiddenCharacters, ' '),
+          msg: message.replace(forbiddenCharacters, " "),
         },
         {
           headers: {
@@ -169,13 +169,13 @@ const Messages = () => {
       .catch((e) => {
         console.log(e);
       });
-  }
+  };
 
   useEffect(() => {
     const intervalId = setInterval(fetchMessages, 3000);
 
-    return () => clearInterval(intervalId)
-  }, [])
+    return () => clearInterval(intervalId);
+  }, []);
 
   useEffect(() => {
     //Axios to get Messages data
@@ -298,7 +298,7 @@ const Messages = () => {
       <section className="get_started messages_container">
         <div className="go_back" style={{ margin: "1rem" }}>
           <button className="btn btn4 normal" onClick={() => navigate("/")}>
-            Go back
+            <i className="fa-solid fa-home"></i>
           </button>
         </div>
         <div className="content">
@@ -316,11 +316,12 @@ const Messages = () => {
                 {processedMessagesData.length !== 0 ? (
                   processedMessagesData.map((row) => (
                     <div
-                      className={`user_box ${selectedUser &&
+                      className={`user_box ${
+                        selectedUser &&
                         selectedUser.partner_id === row.partner_id
-                        ? "active"
-                        : ""
-                        }`}
+                          ? "active"
+                          : ""
+                      }`}
                       key={row.partner_id}
                       onClick={() => handleUserClick(row)}
                     >
@@ -343,10 +344,13 @@ const Messages = () => {
                               __html:
                                 user !== row.partner_id
                                   ? `<b>You:</b> ${truncateMessage(
-                                    row.last_message.replace(/\\n/g, ' '),
-                                    30
-                                  )}`
-                                  : truncateMessage(row.last_message.replace(/\\n/g, ' '), 30),
+                                      row.last_message.replace(/\\n/g, " "),
+                                      30
+                                    )}`
+                                  : truncateMessage(
+                                      row.last_message.replace(/\\n/g, " "),
+                                      30
+                                    ),
                             }}
                           ></span>
                           {row.unseenCount > 0 &&
@@ -433,11 +437,16 @@ const Messages = () => {
                     .sort((a, b) => new Date(a.date) - new Date(b.date)) // Oldest to newest
                     .map((msg) => (
                       <div
-                        className={`msg_box ${msg.sender_id === user ? "receiver" : "sender"
-                          }`}
+                        className={`msg_box ${
+                          msg.sender_id === user ? "receiver" : "sender"
+                        }`}
                         key={msg.msg_id}
                       >
-                        <p dangerouslySetInnerHTML={{ __html: msg.message.replace(/\\n/g, '<br />') }} />
+                        <p
+                          dangerouslySetInnerHTML={{
+                            __html: msg.message.replace(/\\n/g, "<br />"),
+                          }}
+                        />
                         <span className="msg_date">{formatDate(msg.date)}</span>
                         {msg.sender_id === user && (
                           <span
@@ -475,7 +484,7 @@ const Messages = () => {
                       required
                       ref={msg_input}
                       onKeyDown={(e) => {
-                        if (e.key === 'Enter' && !e.shiftKey) {
+                        if (e.key === "Enter" && !e.shiftKey) {
                           e.preventDefault();
                           handleSendMessage(e);
                         }
