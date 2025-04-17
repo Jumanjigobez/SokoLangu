@@ -81,6 +81,7 @@ main {
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
+  min-height: 100vh;
   z-index: 1;
 }
 
@@ -331,6 +332,9 @@ main #active {
 /* Produce Display */
 .produce_display {
   padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .produce_display .content {
@@ -468,10 +472,11 @@ input.search {
 /* Get Started page */
 .get_started {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 20vh);
+  /* min-height: calc(100vh - 20vh); */
 }
 
 .get_started .content {
