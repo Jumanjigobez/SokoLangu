@@ -17,6 +17,8 @@ const Messages = () => {
     [unseenCount, setUnseenCount] = useState(0),
     [error, setError] = useState("");
 
+  const [isHovering, setIsHovering] = useState(false); //for when mouse is hovered on top of the chat area
+
   const [MessagesUpdate, setMessagesUpdate] = useState({
       updated: 0,
     }),
@@ -218,8 +220,8 @@ const Messages = () => {
   }, [MessagesUpdate]);
 
   useEffect(() => {
-    if (selectedUser) {
-      scrollToBottom(); // Scroll to bottom whenever selectedUser changes
+    if (!isHovering) {
+      scrollToBottom(); // Scroll to bottom whenever the mouse is not on top
     }
   }, [MessagesData, selectedUser]);
 
@@ -424,7 +426,12 @@ const Messages = () => {
               )}
             </div>
 
-            <div className="msg_part" ref={msg_part}>
+            <div
+              className="msg_part"
+              ref={msg_part}
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+            >
               {selectedUser ? (
                 <div className="msg_content">
                   {MessagesData.filter(

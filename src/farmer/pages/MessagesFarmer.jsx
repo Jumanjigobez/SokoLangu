@@ -18,9 +18,11 @@ const MessagesFarmer = () => {
     [error, setError] = useState("");
 
   const [MessagesUpdate, setMessagesUpdate] = useState({
-    updated: 0,
-  }),
+      updated: 0,
+    }),
     [isLoading, setIsLoading] = useState(true); //For loading screen when page is changed
+
+  const [isHovering, setIsHovering] = useState(false); //for when mouse is hovered on top of the chat area
 
   const msg_input = useRef(),
     msg_part = useRef();
@@ -70,7 +72,7 @@ const MessagesFarmer = () => {
     }
 
     const message = msg_input.current.value.trim();
-    const forbiddenCharacters = /[\t\r]/g;//the tab, replace character
+    const forbiddenCharacters = /[\t\r]/g; //the tab, replace character
 
     if (message === "") return;
 
@@ -78,7 +80,7 @@ const MessagesFarmer = () => {
       .post(api_url + "/farmer/sendChat.php", {
         farmer_id: user, // Logged-in farmer (Sender)
         consumer_id: selectedUser.partner_id, // Selected consumer (Receiver)
-        msg: message.replace(forbiddenCharacters, ' '),
+        msg: message.replace(forbiddenCharacters, " "),
       })
       .then((response) => {
         if (response.data === 1) {
@@ -157,13 +159,13 @@ const MessagesFarmer = () => {
       .catch((e) => {
         console.log(e);
       });
-  }
+  };
 
   useEffect(() => {
     const intervalId = setInterval(fetchMessages, 3000);
 
-    return () => clearInterval(intervalId)
-  }, [])
+    return () => clearInterval(intervalId);
+  }, []);
 
   useEffect(() => {
     //Axios to get Messages data
@@ -201,15 +203,14 @@ const MessagesFarmer = () => {
     // return () => clearInterval(intervalId);
     // Fetch messages data and unseen count every 3 second
 
-
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
   }, [MessagesUpdate]);
 
   useEffect(() => {
-    if (selectedUser) {
-      scrollToBottom(); // Scroll to bottom whenever selectedUser changes
+    if (!isHovering) {
+      scrollToBottom(); // Scroll to bottom whenever the mouse is not on top
     }
   }, [MessagesData, selectedUser]);
 
@@ -305,11 +306,12 @@ const MessagesFarmer = () => {
                   {processedMessagesData.length !== 0 ? (
                     processedMessagesData.map((row) => (
                       <div
-                        className={`user_box ${selectedUser &&
+                        className={`user_box ${
+                          selectedUser &&
                           selectedUser.partner_id === row.partner_id
-                          ? "active"
-                          : ""
-                          }`}
+                            ? "active"
+                            : ""
+                        }`}
                         key={row.partner_id}
                         onClick={() => handleUserClick(row)}
                       >
@@ -332,10 +334,13 @@ const MessagesFarmer = () => {
                                 __html:
                                   user !== row.partner_id
                                     ? `<b>You:</b> ${truncateMessage(
-                                      row.last_message.replace(/\\n/g, ' '),
-                                      30
-                                    )}`
-                                    : truncateMessage(row.last_message.replace(/\\n/g, ' '), 30),
+                                        row.last_message.replace(/\\n/g, " "),
+                                        30
+                                      )}`
+                                    : truncateMessage(
+                                        row.last_message.replace(/\\n/g, " "),
+                                        30
+                                      ),
                               }}
                             ></span>
                             {row.unseenCount > 0 &&
@@ -409,7 +414,12 @@ const MessagesFarmer = () => {
                 )}
               </div>
 
-              <div className="msg_part" ref={msg_part}>
+              <div
+                className="msg_part"
+                ref={msg_part}
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+              >
                 {selectedUser ? (
                   <div className="msg_content">
                     {MessagesData.filter(
@@ -422,11 +432,16 @@ const MessagesFarmer = () => {
                       .sort((a, b) => new Date(a.date) - new Date(b.date)) // Oldest to newest
                       .map((msg) => (
                         <div
-                          className={`msg_box ${msg.sender_id === user ? "receiver" : "sender"
-                            }`}
+                          className={`msg_box ${
+                            msg.sender_id === user ? "receiver" : "sender"
+                          }`}
                           key={msg.msg_id}
                         >
-                          <p dangerouslySetInnerHTML={{ __html: msg.message.replace(/\\n/g, '<br />') }} />
+                          <p
+                            dangerouslySetInnerHTML={{
+                              __html: msg.message.replace(/\\n/g, "<br />"),
+                            }}
+                          />
                           <span className="msg_date">
                             {formatDate(msg.date)}
                           </span>
@@ -466,7 +481,7 @@ const MessagesFarmer = () => {
                         required
                         ref={msg_input}
                         onKeyDown={(e) => {
-                          if (e.key === 'Enter' && !e.shiftKey) {
+                          if (e.key === "Enter" && !e.shiftKey) {
                             e.preventDefault();
                             handleSendMessage(e);
                           }
