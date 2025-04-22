@@ -4,7 +4,7 @@ include "../config.php";
 
 $user_id = mysqli_real_escape_string($conn, $_POST['UserId']);
 $username = mysqli_real_escape_string($conn, $_POST['Username']);
-$first_name = mysqli_real_escape_string($conn, $_POST['FirstName']);
+$first_name = mysqli_real_escape_string($conn, $_POST['Firstname']);
 $last_name = mysqli_real_escape_string($conn, $_POST['Lastname']);
 $phone_no = mysqli_real_escape_string($conn, $_POST['Phone']);
 $email = mysqli_real_escape_string($conn, $_POST['Email']);
@@ -12,8 +12,11 @@ $region = mysqli_real_escape_string($conn, $_POST['Region']);
 $role = mysqli_real_escape_string($conn, $_POST['Role']);
 $password = mysqli_real_escape_string($conn, $_POST['Psk']);
 $status = mysqli_real_escape_string($conn, $_POST['Status']);
+$joined_date = mysqli_real_escape_string($conn, $_POST['JoinedDate']);
+$photo = mysqli_real_escape_string($conn, $_POST['Photo']);
 $terms_agreed = mysqli_real_escape_string($conn, $_POST['TermsAgreed']);
 
+$hashed_psk = password_hash($password, PASSWORD_DEFAULT); 
 $uploaded_image = false;
 $newImageName = "";
 
@@ -50,12 +53,12 @@ if (isset($_FILES['Photo']) && $_FILES['Photo']['error'] !== 4) {
 // Update query
 if ($uploaded_image) {
     // Update all fields including image
-    $query = $conn->prepare("UPDATE users_table SET Username = ?, FirstName = ?, LastName = ?, PhoneNo = ?, Email = ?, Region = ?, Role = ?, Password = ?, Status = ?, TermsAgreed = ?, Photo = ? WHERE UserID = ?");
-    $query->bind_param("ssssssssssss", $username, $first_name, $last_name, $phone_no, $email, $region, $role, $password, $status, $terms_agreed, $newImageName, $user_id);
+    $query = $conn->prepare("UPDATE users_table SET Username = ?, FirstName = ?, LastName = ?, PhoneNo = ?, Email = ?, Region = ?, Role = ?, Password = ?, JoinedDate=?, Status = ?, TermsAgreed = ?, Photo = ? WHERE UserID = ?");
+    $query->bind_param("sssssssssssss", $username, $first_name, $last_name, $phone_no, $email, $region, $role, $hashed_psk, $joined_date, $status, $terms_agreed, $newImageName, $user_id);
 } else {
     // Update fields except image
-    $query = $conn->prepare("UPDATE users_table SET Username = ?, FirstName = ?, LastName = ?, PhoneNo = ?, Email = ?, Region = ?, Role = ?, Password = ?, Status = ?, TermsAgreed = ? WHERE UserID = ?");
-    $query->bind_param("sssssssssss", $username, $first_name, $last_name, $phone_no, $email, $region, $role, $password, $status, $terms_agreed, $user_id);
+    $query = $conn->prepare("UPDATE users_table SET Username = ?, FirstName = ?, LastName = ?, PhoneNo = ?, Email = ?, Region = ?, Role = ?, Password = ?, JoinedDate=?, Status = ?, TermsAgreed = ?, Photo=? WHERE UserID = ?");
+    $query->bind_param("sssssssssssss", $username, $first_name, $last_name, $phone_no, $email, $region, $role, $hashed_psk, $joined_date, $status, $terms_agreed, $photo, $user_id);
 }
 
 $query->execute();

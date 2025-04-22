@@ -4,8 +4,7 @@ include "../config.php";
 
 $user_id = $_GET['user_id'];
 
-$query = $conn->prepare("SELECT UserID, Username, FirstName, LastName, PhoneNo, Email, Region, Photo 
-                         FROM users_table WHERE UserID = ?");
+$query = $conn->prepare("SELECT * FROM users_table WHERE UserID = ?");
 $query->bind_param("s", $user_id);
 $query->execute();
 
@@ -19,13 +18,18 @@ if ($row = $result->fetch_assoc()) {
         'username' => $row['Username'],
         'firstName' => $row['FirstName'],
         'lastName' => $row['LastName'],
-        'Phone' => $row['PhoneNo'],
+        'phone' => $row['PhoneNo'],
         'email' => $row['Email'],
         'region' => $row['Region'],
-       
-       
-  
+        'password' => $row["Password"], 
+        'status' => $row["Status"], 
+        'role' => $row["Role"], 
+        'joined' => $row["JoinedDate"], 
+        'terms_agreed' => $row['TermsAgreed'],
         'photo' => $row['Photo'] // Profile image path
+       
+       
+       
     );
 
     // Convert the data to JSON and send it as the response
