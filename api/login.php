@@ -55,7 +55,8 @@
                        "user_id" => $user_id,
                         "username" => $row['Username'],
                         "role" => $role,
-                        "status" => $status
+                        "status" => $status,
+                        "region" => $row['Region']
                     );
 
                     $responseArray[] = $responseItem;
