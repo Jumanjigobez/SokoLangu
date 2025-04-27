@@ -79,7 +79,7 @@ const FarmerSignup = () => {
     const phone_regex = /^[07][0-9]{9}$/; // Kenyan phone numbers
 
     const username_regex = /^[a-zA-Z0-9_]{3,20}$/,
-      names_regex = /^[A-Z][a-z]{1,49}$/,
+      names_regex = /^[a-zA-Z]{1,49}$/,
       psk_regex =
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
