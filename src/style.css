@@ -2315,7 +2315,9 @@ table.projects thead {
     margin-top: 2rem;
     border-radius: 8px;
   }
-
+  .box2 .txt_part {
+    width: 100%;
+  }
   .box2 .txt_part p {
     font-size: 15px;
   }
